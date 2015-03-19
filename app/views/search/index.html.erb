@@ -1,0 +1,23 @@
+
+<%= form_tag(root_path, method: :get) do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q, params[:q]) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= link_to('Logout', destroy_user_session_path, :method => :delete)%>
+
+<% if @movies.present? %>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li>
+        <p>
+           <%= movie["trackCensoredName"] %>
+           <%= image_tag(movie["artworkUrl100"]) %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+
+<% end %>
